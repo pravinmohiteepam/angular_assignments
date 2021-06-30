@@ -1,0 +1,93 @@
+<div class="registration-form">
+    <h2>Registration Form:</h2>
+
+    <form class="reg-form" [formGroup]="registrationForm" (ngSubmit)="onSubmit()">
+        <div class="form-group row">
+            <label for="firstName" class="col-4 col-form-label">First name: </label> 
+            <div class="col-8">
+              <input id="firstName" name="firstName" placeholder="Enter first name" formControlName="firstName" id="firstName" type="text" class="form-control">
+              <small class="form-text text-danger" *ngIf="registrationForm.get('firstName').touched && registrationForm.get('firstName').hasError('required')">This field is required.<br/></small>   
+            </div>
+        </div>
+        <div class="form-group row">
+            <label for="lname" class="col-4 col-form-label">Last Name:</label>
+            <div class="col-8">
+              <input type="text" class="form-control" formControlName="lastName" id="lastName">
+              <small class="form-text text-danger" *ngIf="registrationForm.get('lastName').touched && registrationForm.get('lastName').hasError('required')">This field is required.<br/></small>   
+            </div>
+        </div>
+        <div class="form-group row">
+            <label for="usr" class="col-4 col-form-label">UserName:</label>
+            <div class="col-8">
+                <input type="text" class="form-control" formControlName="userName" id="userName">
+                <span *ngIf="!registrationForm.get('userName').valid && registrationForm.get('userName').touched" class="help-block">
+                    <span class="form-text text-danger"  *ngIf="registrationForm.get('userName').errors['nameIsForbidden']">This name is already taken</span>
+                    <span class="form-text text-danger" *ngIf="registrationForm.get('userName').errors['required']">This field is required!</span>
+                </span>
+            </div>
+        </div>
+         <div class="form-group row">
+            <label for="email" class="col-4 col-form-label">Email:</label>
+            <div class="col-8">
+                <input type="text" class="form-control" formControlName="email" id="email">
+                <span class="form-text text-danger" *ngIf="!registrationForm.get('email').valid && registrationForm.get('email').touched">
+                    Please enter a valid email!
+                </span>
+             </div>       
+        </div>
+        <div class="form-group row">
+            <label for="phone" class="col-4 col-form-label">Phone:</label>
+            <div class="col-8">
+                <input type="number" class="form-control" formControlName="phone" id="phone">
+                <span *ngIf="!registrationForm.get('phone').valid && registrationForm.get('phone').touched" class="help-block">
+                    <span class="form-text text-danger" *ngIf="registrationForm.get('phone').errors['invalidPhonenUmber']">Please enter valid phone number</span>
+                    <span class="form-text text-danger" *ngIf="registrationForm.get('phone').errors['required']">This field is required!</span>
+                </span>
+            </div>
+        </div>
+        <div class="form-group row">
+            <label for="password" class="col-4 col-form-label">Password:</label>
+            <div class="col-8">
+                <input type="password" class="form-control" formControlName="password" id="password">
+                <span *ngIf="!registrationForm.get('password').valid && registrationForm.get('password').touched" class="help-block">
+                    <span class="form-text text-danger" *ngIf="registrationForm.get('password').errors['invalidPassword']">Please enter valid password number</span>
+                    <span class="form-text text-danger" *ngIf="registrationForm.get('password').errors['required']">This field is required!</span>
+                </span>
+            </div>    
+        </div>
+        <div class="form-group row">
+            <label for="cnfpassword" class="col-4 col-form-label">Confirm Password:</label>
+            <div class="col-8">
+                <input type="password" class="form-control" formControlName="confirmPassword" id="confirmPassword">
+                <span *ngIf="!registrationForm.get('confirmPassword').valid && registrationForm.get('confirmPassword').touched" class="help-block">
+                    <span class="form-text text-danger" *ngIf="registrationForm.get('confirmPassword').errors['cnfPasswordCriteria']">Not matching with password</span>
+                    <span class="form-text text-danger" *ngIf="registrationForm.get('confirmPassword').errors['required']">This field is required!</span>
+                </span>
+            </div>
+        </div>
+        <div class="form-group row">
+            <label for="gender" class="col-4 col-form-label">Gender:</label>
+            <div class="radio col-2" *ngFor="let gender of genders">
+                <label class="col-form-label">
+                    <input type="radio" formControlName="gender" [value]="gender" required>{{ gender }}
+                </label>
+            </div>
+        </div>
+        <div class="form-group row">
+            <label for="dob" class="col-4 col-form-label">Date Of Birth:</label>
+            <div class="col-8">
+              <input type="date" class="form-control" formControlName="dob" id="dob">
+            </div>
+        </div>
+        <div class="form-check form-group-row">
+            <input class="form-check-input" type="checkbox" formControlName="confirm" id="confirm">
+            <div class="col-8">
+              <label class="form-check-label" for="confirm">Confirm T&C</label>
+            </div>
+        </div>
+        <div class="form-group row">
+            <button class="btn btn-success" type="submit">Submit</button>
+        </div>
+
+    </form>
+</div>

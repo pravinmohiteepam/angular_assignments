@@ -13,3 +13,25 @@ table {
   tr:nth-child(even) {
     background-color: #dddddd;
   }
+  .registration-form {
+    width:70%;
+    border: solid 1px gainsboro;
+    padding: 15px;
+    margin: 30px auto 30px auto;
+  }
+  .registration-form h2 {
+    border-bottom: solid 1px gainsboro;
+    margin-bottom: 20px;
+  }
+  .registration-form .form-group,login-form .form-group {
+    margin-bottom:15px;
+  }
+  .login-form {
+    width:40%;
+    border: solid 1px gainsboro;
+    padding: 15px;
+    margin: 30px auto 30px auto;
+  }
+  .btn-submit {
+    margin-top:10px;
+  }

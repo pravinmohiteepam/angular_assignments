@@ -1,0 +1,21 @@
+<div class="login-form">
+    <h2>Login Form:</h2>
+    <div class="container loginForm">
+        <div class="row">
+            <div class="col-xs-12 col-sm-10 col-md-12 col-sm-offset-1 col-md-offset-2">
+                <form  #loginForm="ngForm" (ngSubmit)="onSubmit(loginForm)" novalidate>
+                    <div class="form-group">
+                        <label for="name">Name</label>
+                        <input type="text" class="form-control" id="name" required [(ngModel)]="model.name" name="name">
+                    </div>
+                    <div class="form-group">
+                        <label for="password">password</label>
+                        <input type="password" class="form-control" id="password" required [(ngModel)]="model.password" name="password">
+                    </div>
+                    <div *ngIf="invalidDetails" class="help-block form-text text-danger">Please ensure entered values are correct!</div>
+                    <button [disabled]="!loginForm.valid" class="btn btn-primary btn-submit" type="submit">Submit</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
