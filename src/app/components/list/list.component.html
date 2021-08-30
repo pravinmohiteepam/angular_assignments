@@ -1,4 +1,4 @@
-<table>
+<table class="table table-bordered user-list-table">
     <thead>
      <tr>
        <th *ngFor="let item of users?.data[0] | keyvalue">
@@ -10,15 +10,20 @@
       <tr *ngFor="let item of users?.data">
        <td>{{item.avatar}}</td>
        <td>{{item.email}}</td>
-       <td>{{item.first_name}}</td>
+       <td>
+         <a *ngIf="isAdminRole" href="" [routerLink]="['/profile', item.id]">{{item.first_name}}</a>
+        <span *ngIf="!isAdminRole">{{item.first_name}}</span>
+      </td>
        <td>{{item.id}}</td>
        <td>{{item.last_name}}</td>
       </tr>
     </tbody>
   </table>
-  <p>
-    Formatted Phone Number: <b>{{ myNumber | phoneFormat }}</b>
-  </p>
-  <p>
-    {{dateNow | date: 'dd/MM/yyyy'}}
-  </p>
+  <div class="formatted-data">
+    <p>
+      Formatted Phone Number: <b>{{ myNumber | phoneFormat }}</b>
+    </p>
+    <p>
+      {{dateNow | date: 'dd/MM/yyyy'}}
+    </p>
+</div>

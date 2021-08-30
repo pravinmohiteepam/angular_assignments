@@ -1,0 +1,27 @@
+<div class="py-3">
+    <div class="px-5 d-flex flex-column flex-md-row align-items-center pb-3 mb-4 border-bottom">
+       <div>
+        <a [routerLink]="['/list']" class="d-flex align-items-center text-dark text-decoration-none">
+        <span class="fs-4">
+            <ng-content></ng-content>
+        </span>
+        </a>
+       </div>
+       <nav class="px-5">
+         <a href="" class="me-3 py-2 text-dark text-decoration-none" [routerLink]="['/list']" *ngIf="authenticatedObj.isAuthenticated">Users</a>
+        </nav> 
+        <nav class="d-inline-flex mt-2 mt-md-0 ms-md-auto">
+        <a class="me-3 py-2 text-dark text-decoration-none" (click)="openContactUs()">Contact Us</a>
+        </nav>
+        <div class="d-inline-block" ngbDropdown #myDrop="ngbDropdown" *ngIf="authenticatedObj.isAuthenticated">
+            <button class="btn btn-outline-primary mr-2" id="dropdownManual" ngbDropdownAnchor (focus)="myDrop.open()">{{authenticatedObj.userName}}</button>
+            <div ngbDropdownMenu aria-labelledby="dropdownManual">
+              <!-- <button ngbDropdownItem (click)="viewProfile()">View profile</button> -->
+              <button ngbDropdownItem (click)="logout()">Log out</button>
+            </div>
+        </div>
+        <div class="d-inline-block" *ngIf="!authenticatedObj.isAuthenticated">
+          <button (click)="goToLogin()" class="btn btn-outline-primary">Sign In</button>
+        </div>
+    </div>
+</div> 

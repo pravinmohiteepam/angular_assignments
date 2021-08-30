@@ -47,8 +47,7 @@ export class RegistrationComponent implements OnInit {
   }
 
   phoneNumber(control: FormControl) {
-    let val: string;
-    val = String(control.value);
+    const val = String(control.value);
     if (val && val.length !== 10) {
       return {'invalidPhonenUmber': true};
     } else {
@@ -57,8 +56,7 @@ export class RegistrationComponent implements OnInit {
   }
 
   passwordCheck(control: FormControl) {
-    let val: string;
-    val = control.value;
+    const val = control.value;
     if (val && val.length < 8) {
       return {'invalidPassword': true};
     } else {
@@ -67,8 +65,7 @@ export class RegistrationComponent implements OnInit {
   }
 
   confirmPassword(control: FormControl) {
-    let val: string;
-    val = control.value;
+    const val = control.value;
     if (val && val.length < 8) {
       return {'cnfPasswordCriteria': true}
     }

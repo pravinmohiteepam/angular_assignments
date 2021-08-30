@@ -1,16 +1,15 @@
 import { HttpErrorResponse, HttpEvent, HttpHandler, HttpInterceptor, HttpRequest, HttpResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import {catchError, retryWhen} from 'rxjs/operators';
+import {catchError} from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
 })
 export class TimeStampService implements HttpInterceptor{
 
-  constructor() { }
   intercept(req: HttpRequest<any>,next: HttpHandler):  Observable<HttpEvent<any>> {
-    let timeStamp=(new Date()).getTime();
+    const timeStamp=(new Date()).getTime();
     const cloneReq=req.clone(
       {
         url: req.url+"&timeStamp="+timeStamp,

@@ -13,6 +13,14 @@ table {
   tr:nth-child(even) {
     background-color: #dddddd;
   }
+  .user-list-table {
+    width:90% !important;
+    margin:auto;
+  }
+  .formatted-data {
+    width:90%!important;
+    margin:auto;
+  }
   .registration-form {
     width:70%;
     border: solid 1px gainsboro;
@@ -34,4 +42,25 @@ table {
   }
   .btn-submit {
     margin-top:10px;
+  }
+  .footer {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    color: white;
+  }
+  .profile-page {
+    width:50%;
+    margin:auto;
+    border: solid 1px gainsboro;
+    padding: 10px;
+  }
+  .page-header {
+    border-bottom: solid 1px gainsboro;
+    margin-bottom: 20px;
+  }
+  .btn-register {
+    margin-left:10px;
+    border:solid 1px black !important;
   }

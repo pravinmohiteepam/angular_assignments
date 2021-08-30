@@ -1,6 +1,8 @@
-import { Component } from '@angular/core';
+import { Component, ComponentFactoryResolver, ViewChild, ViewContainerRef } from '@angular/core';
 import { ApiService } from './services/apiService/api.service';
-import { KeyValuePipe } from '@angular/common';
+import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
+import { PopupModalComponent } from './components/popup-modal/popup-modal.component';
+import { DynamicComponent } from './components/dynamic-component/dynamic.component';
 
 @Component({
   selector: 'app-root',
@@ -9,18 +11,26 @@ import { KeyValuePipe } from '@angular/common';
 })
 
 export class AppComponent {
-  // getUsersUrl: string = 'https://reqres.in/api/users?page=2';
-  // users: any;
-  // myNumber = "9075190764";
-  // dateNow : Date = new Date();
-  // constructor(private apiService: ApiService){}
-  // ngOnInit() {
-  //   this.getUsers();
-  // }
-  // getUsers() {
-  //   this.apiService.getUsers(this.getUsersUrl).subscribe(response=>{
-  //     this.users = response;
-  //     console.log('users',this.users);
-  //   })
-  // }
+  @ViewChild('footerTemplate', { read: ViewContainerRef })
+  private viewRef!: ViewContainerRef;
+  closeResult = '';
+  
+  constructor(private apiService: ApiService,
+    private modalService: NgbModal,
+    private cfr: ComponentFactoryResolver
+  ){
+  }
+  ngAfterViewInit() {
+    this.loadComponent();
+  }
+
+  openContactUs() {
+    const modalRef = this.modalService.open(PopupModalComponent);
+    modalRef.componentInstance.message = 'Contact : 9132443434';
+  }
+  loadComponent() {
+    this.viewRef.clear();
+    const componentFactory = this.cfr.resolveComponentFactory(DynamicComponent);
+    const componentRef = this.viewRef.createComponent(componentFactory);
+  }
 }

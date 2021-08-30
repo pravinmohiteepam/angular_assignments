@@ -10,6 +10,10 @@ import { RouterModule, Routes } from '@angular/router'
 import { AppRoutingModule } from './app-routing.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ListComponent } from './components/list/list.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { PopupModalComponent } from './components/popup-modal/popup-modal.component';
+import { HeaderComponent } from './components/partial_views/header/header.component';
+import { DynamicComponent } from './components/dynamic-component/dynamic.component';
 
 const routes: Routes = []
 
@@ -19,7 +23,10 @@ const routes: Routes = []
     PhoneFormatPipe,
     RegistrationComponent,
     LoginComponent,
-    ListComponent
+    ListComponent,
+    PopupModalComponent,
+    HeaderComponent,
+    DynamicComponent,
   ],
   imports: [
     BrowserModule,
@@ -27,10 +34,11 @@ const routes: Routes = []
     RouterModule,
     AppRoutingModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    NgbModule
   ],
   providers: [
-    { provide: HTTP_INTERCEPTORS, useClass: TimeStampService, multi: true }
+    { provide: HTTP_INTERCEPTORS, useClass: TimeStampService, multi: true },
   ],
   bootstrap: [AppComponent]
 })
